@@ -1,0 +1,10 @@
+{
+	"parser": "@babel/eslint-parser",
+
+	"extends": "airbnb",
+
+	"plugins": ["prettier"],
+  "rules" : {
+    "no-underscore-dangle":  [2, { "allow": ["_id", "_doc", "_json"] }]
+  }
+}

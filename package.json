@@ -1,0 +1,43 @@
+{
+  "name": "studioghiblibackend",
+  "version": "1.0.0",
+  "description": "Proyecto Backend de Platzi Master",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec babel-node server.js",
+    "build": "babel server.js -d dist",
+    "start": "babel-node server.js",
+    "lint": "eslint ./",
+    "lint:fix": "eslint ./ --fix"
+  },
+  "author": "Cesar Velasquez, Juan Martinez",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.10",
+    "multer": "^1.4.4",
+    "passport": "^0.5.2",
+    "passport-facebook": "^3.0.0",
+    "passport-twitter": "^1.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.2"
+  }
+}
