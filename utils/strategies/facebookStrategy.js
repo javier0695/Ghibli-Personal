@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'development') {
   url = `http://${process.env.HOST}:${process.env.PORT}/auth/facebook/callback`;
 } else {
   //url = `https://${process.env.HOST}/auth/facebook/callback`;
-  url = `https://estudio-ghibli-2022.herokuapp.com/auth/facebook`;
+  url = `https://estudio-ghibli-2022.herokuapp.com/auth/facebook/callback`;
 }
 const FacebookStrategy = new Strategy(
   {
