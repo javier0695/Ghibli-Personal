@@ -4,6 +4,7 @@ import {
   addMovie, getMovie, listMovies, watchedMovie, addListOfMovies,
 } from './controller';
 import verifyEnvironment from '../../middleware/environment';
+import checkRole from '../../middleware/checkRole';
 
 const router = express.Router();
 
@@ -16,7 +17,7 @@ router.post('/', verifyEnvironment, async (req, res) => {
   }
 });
 
-router.post('/addList', verifyEnvironment, async (req, res) => {
+router.post('/addList', verifyEnvironment,checkRole, async (req, res) => {
   try {
     await addListOfMovies(req.body);
     success(req, res, req.body, 201);

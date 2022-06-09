@@ -23,6 +23,7 @@ async function addUser(newUser) {
     const token = sign(
       {
         _id: user._id,
+        _role: user.role,
       },
       process.env.JWT_SECRET,
       { expiresIn: '2d' },
@@ -32,6 +33,7 @@ async function addUser(newUser) {
       _id: user._id,
       userName: user.userName,
       email: user.email,
+      role: user.role,
       profilePic: user.profilePic,
       watchedMovies: user.watchedMovies.length,
       token,
@@ -72,6 +74,7 @@ async function findUser(userFind) {
       _id: user._id,
       userName: user.userName,
       email: user.email,
+      role: user.role,
       profilePic: user.profilePic,
       watchedMovies: user.watchedMovies.length,
       token,
@@ -119,6 +122,7 @@ async function updateUser(userID, userData, profilePic) {
       _id: user._id,
       userName: user.userName,
       email: user.email,
+      _role:user.role,
       profilePic: user.profilePic,
       watchedMovies: user.watchedMovies.length,
     };
@@ -136,6 +140,7 @@ async function findOrCreate(userFind) {
         const newUser = {
           userName: userFind.name,
           email: userFind.email,
+          role:user.role,
           profilePic: userFind.picture.data.url,
         };
         user = await _addUser(newUser);
@@ -152,6 +157,7 @@ async function findOrCreate(userFind) {
     const token = sign(
       {
         _id: user._id,
+        role: user.role,
       },
       process.env.JWT_SECRET,
       { expiresIn: '2d' },
@@ -160,6 +166,7 @@ async function findOrCreate(userFind) {
       _id: user._id,
       userName: user.userName,
       email: user.email,
+      role:user.role,
       profilePic: user.profilePic,
       watchedMovies: user.watchedMovies.length,
       token,
