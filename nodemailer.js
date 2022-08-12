@@ -17,7 +17,7 @@ async function sendMail() {
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: process.env.EMAIL_USER, // sender address
-    to: 'cesarvelasquezdev@gmail.com', // list of receivers
+    to: 'javierportilla8@gmail.com', // list of receivers
     subject: 'Test email', // Subject line
     text: 'Recovery password', // plain text body
     html: '<b>Recovery password</b>', // html body
