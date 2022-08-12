@@ -1,10 +1,12 @@
 import express from 'express';
 import multer from 'multer';
 import passport from 'passport';
+import checkRole from '../../middleware/checkRole';
 import { success, error as _error } from '../../network/response';
 import {
-  findOrCreate, addUser, findUser, updateUser,
+  findOrCreate, addUser, findUser, updateUser, findByEmail, sendRecovery
 } from './controller';
+const nodemailer =require("nodemailer");
 
 const auth = express.Router();
 const user = express.Router();
@@ -43,7 +45,7 @@ auth.get(
   },
 );
 
-auth.post('/signup', async (req, res) => {
+auth.post('/signup',checkRole, async (req, res) => {
   try {
     const data = await addUser(req.body);
     success(req, res, data, 201);
@@ -60,6 +62,19 @@ auth.post('/login', async (req, res) => {
     _error(req, res, `${error}`, 500);
   }
 });
+
+auth.post('/recovery', 
+ async(req, res) => { 
+   try {
+     const data = await findByEmail(req.body); 
+     //success(req, res, data, 200);
+     const rta = await sendRecovery(data);
+     res.json(rta);
+   } catch(error){
+     _error(req, res, `${error}`,500);
+   }
+  }
+ );
 
 user.patch('/update', upload.single('profilePic'), async (req, res) => {
   try {

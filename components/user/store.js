@@ -2,13 +2,13 @@ import bcrypt from 'bcrypt';
 import Model from './model';
 
 async function addUser({
-  userName, email,role, password, profilePic,
+  userName, email, role, password, profilePic,
 }) {
   try {
     const user = {
       userName,
       email,
-      role: role || 'general',
+      role: role ? role : 'general',
       password: password && await bcrypt.hash(password, 10),
       profilePic: profilePic || `${process.env.HOST}:${process.env.PORT}/app/files/default_image.jpeg`,
     };

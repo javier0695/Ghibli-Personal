@@ -20,6 +20,10 @@ function authenticate(req, res, next) {
     return _error(req, res, 'No se pudo autenticar', 400, 'El _id no se encuentra en el token');
   }
 
+  if (!userFind.role) {
+    return _error(req, res, 'No se pudo autenticar', 400, 'El role no se encuentra en el token');
+  }
+
   req.user = userFind;
   return next();
 }
