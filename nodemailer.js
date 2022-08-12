@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 async function sendMail() {
 
   // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     host: "process.env.SMTP_HOST",
     secure: true, // false for others ports , 465 true
     port: 465,

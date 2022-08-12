@@ -264,7 +264,7 @@ async function sendRecovery(foundUser) {
     process.env.JWT_SECRET,
     { expiresIn: '15min' },
   );
-  const link = `https://ghibli-prueba.herokuapp.com/recovery?token=${token}`;
+  const link = `https://estudio-ghibli-2022.herokuapp.com/recovery?token=${token}`;
 
   const userID = foundUser._id;
   const newData = {
